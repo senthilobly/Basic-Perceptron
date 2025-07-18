@@ -4,7 +4,7 @@ This project implements a simple 3-layer feedforward neural network from scratch
 
 ---
 
-## 🤩 Problem Description
+## Problem Description
 
 - **Dataset**: XOR gate truth table:
 
@@ -19,7 +19,7 @@ This project implements a simple 3-layer feedforward neural network from scratch
 
 ---
 
-## ✅ Network Architecture
+## Network Architecture
 
 | Layer              | Details                                                  |
 | ------------------ | -------------------------------------------------------- |
@@ -30,7 +30,7 @@ This project implements a simple 3-layer feedforward neural network from scratch
 
 ---
 
-## 📝 Components Explained
+## Components Explained
 
 ### 1. **Forward Propagation**
 
@@ -45,7 +45,7 @@ This project implements a simple 3-layer feedforward neural network from scratch
 - **Binary Cross-Entropy Loss**:
 
 $$
-\text{Loss} = -\frac{1}{m} \sum \left[ y \log(A3) + (1 - y) \log(1 - A3) \right]
+Loss = Cross Entrophy Loss
 $$
 
 ### 3. **Backward Propagation**
@@ -59,7 +59,7 @@ $$
 - **Gradient Descent** is used to update weights and biases:
 
 $$
-W = W - \text{learning\_rate} \times dW
+W = W - Learning_rate * dW
 $$
 
 ---
@@ -95,15 +95,6 @@ Predictions:
 
 ---
 
-## 🖼️ Plotting
-
-The current script contains a placeholder for plotting:
-
-```python
-plt.plot(X,)
-plt.show()
-```
-
 You can modify it to plot **loss over epochs** like:
 
 ```python
@@ -138,7 +129,7 @@ python xor_neural_network.py
 
 ---
 
-## 📚 Learning Notes
+## Learning Notes
 
 - ReLU activation keeps the hidden layers non-linear.
 - Sigmoid activation converts final output into a probability.
@@ -146,13 +137,4 @@ python xor_neural_network.py
 - Using a simple MLP, you can solve non-linearly separable problems like XOR!
 
 ---
-
-## 📁 Folder Structure
-
-```
-project/
-│
-├── xor_neural_network.py  # Main Python Script
-└── README.md              # This README file
-```
 
