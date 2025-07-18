@@ -64,7 +64,7 @@ $$
 
 ---
 
-## ⚙️ Hyperparameters
+##  Hyperparameters
 
 | Hyperparameter | Value                    |
 | -------------- | ------------------------ |
@@ -76,7 +76,7 @@ $$
 
 ---
 
-## 📈 Expected Output
+## Expected Output
 
 - The **loss** decreases progressively and the model **predicts the XOR pattern correctly** after training.
 - Example Output:
@@ -112,7 +112,7 @@ plt.show()
 
 ---
 
-## 🛠️ How to Run
+## How to Run
 
 1. Install Python 3.x
 2. Install NumPy and Matplotlib:
