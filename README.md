@@ -46,6 +46,10 @@ The perceptron updates its weights iteratively using the **Perceptron Learning A
    - Bias Updation : b + Learning_rate * (y_true - y_pred)
    - `α` = learning rate (usually `0 < α ≤ 1`).
 
+## Limitations
+- **Linearly Separable Data**: Only works if data can be divided by a hyperplane.
+- **XOR Problem**: Cannot solve non-linear problems (e.g., XOR), leading to the development of multi-layer perceptrons (MLPs).
+
 **Multiple Layer Preceptron (MLP):**
 1. Forward Propagation:
    
