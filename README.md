@@ -18,7 +18,8 @@ A Perceptron is the most basic type of neural network, used for **binary classif
 - **Visualization**: Plots **True vs Predicted** outputs for every epoch.
 
 Multiple Layer Preceptron (MLP):
-1. Forward and Backward Propagation
+1. Forward and Backward Propagation:
+   
    A. Weighted Input
    It’s the process of passing inputs through layers of the neural network to get the output (prediction).Each neuron     computes a weighted sum of inputs plus bias and applies an activation function to introduce non-linearity.
     
