@@ -17,7 +17,36 @@ A Perceptron is the most basic type of neural network, used for **binary classif
 - **Training**: 20 epochs using simple Perceptron learning rule.
 - **Visualization**: Plots **True vs Predicted** outputs for every epoch.
 
-Multiple Layer Preceptron (MLP):
+**Simple Preceptron:**
+A perceptron is a **binary linear classifier** that:
+- Takes multiple input features.
+- Computes a weighted sum of the inputs.
+- Applies an activation function (e.g., step function) to produce an output (typically `0` or `1`).
+
+## Mathematical Model
+### Inputs and Weights
+Given:
+- Input vector: **X** = [x₁, x₂, ..., xₙ]
+- Weight vector: **W** = [w₁, w₂, ..., wₙ]
+- Bias: `b`
+### Weighted Sum (Pre-Activation)
+The perceptron computes: z = sum(i=1)^n = (W_i * X_i)+ b_i
+
+### Activation Function
+A **step function** is applied to `z`: 
+f(z) = Activation(z) # A = Relu, Sigmoid, Tanh or LeakyRelu
+
+## Learning Rule
+The perceptron updates its weights iteratively using the **Perceptron Learning Algorithm**:
+1. **Initialize** weights (`w`) and bias (`b`) to small random values or `0`.
+2. **For each training sample** (xᵢ, yᵢ):
+   - Compute predicted output: y_pred = Activation(f(z))
+   - Update Weight if y_pred != y_true
+   - Weight updation : w_i = w_i + Learning_rate * (y_true - y_pred) * x_i
+   - Bias Updation : b + Learning_rate * (y_true - y_pred)
+   - `α` = learning rate (usually `0 < α ≤ 1`).
+
+**Multiple Layer Preceptron (MLP):**
 1. Forward Propagation:
    
    A. Weighted Input
