@@ -50,7 +50,7 @@ The perceptron updates its weights iteratively using the **Perceptron Learning A
 - **Linearly Separable Data**: Only works if data can be divided by a hyperplane.
 - **XOR Problem**: Cannot solve non-linear problems (e.g., XOR), leading to the development of multi-layer perceptrons (MLPs).
 
-**Multiple Layer Preceptron (MLP):**
+****Multiple Layer Preceptron (MLP):****
 1. Forward Propagation:
    
    A. Weighted Input
