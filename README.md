@@ -67,13 +67,30 @@ The perceptron updates its weights iteratively using the **Perceptron Learning A
       A = Relu, Sigmoid, Tanh or LeakyRelu
    
 2. Backward Propagation:
-   A. It calculates the error between prediction and actual output.
+   A. It calculates the error(Loss Function) between prediction and actual output.
    B. Gradients (slopes) are calculated using the chain rule.
    C. Weights are updated in the direction that reduces the error (gradient descent).
 
    Mathematical Formula - dloss/dweight = dloss/dactivation X dactivation/dweightedinput x dweightedinput/dweight
    
    Goal: Minimize the loss by updating W and B.
+
+3. Loss Calculation:
+   It measures how “wrong” the model’s predictions are.
+   | Type              | Use-Case       | Formula                                         |
+   | ----------------- | -------------- | ----------------------------------------------- |
+   | **MSE**           | Regression     | $\frac{1}{n} \sum (y - \hat{y})^2$              |
+   | **Cross-Entropy** | Classification | $-[y \log(\hat{y}) + (1 - y)\log(1 - \hat{y})]$ |
+
+   Interpretation:
+   Lower loss = better predictions.
+   Optimizer’s goal = minimize loss.
+
+   Example:
+   If prediction = 0.9, true label = 1:
+   Cross-Entropy Loss = −log(0.9)=0.105
+
+
    
 
 
