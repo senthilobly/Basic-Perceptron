@@ -17,6 +17,17 @@ A Perceptron is the most basic type of neural network, used for **binary classif
 - **Training**: 20 epochs using simple Perceptron learning rule.
 - **Visualization**: Plots **True vs Predicted** outputs for every epoch.
 
+Multiple Layer Preceptron (MLP):
+1. Forward and Backward Propagation
+   A. Weighted Input
+   It’s the process of passing inputs through layers of the neural network to get the output (prediction).Each neuron     computes a weighted sum of inputs plus bias and applies an activation function to introduce non-linearity.
+    
+       Mathematical Formula - z = W.x + b
+       W = Weights corresponding to that neuron
+       B =  Bias Corresponding to that nueron
+       X = Input for the neuron
+
+
 ## How to Run
 
 Make sure you have Python installed along with NumPy and Matplotlib.
