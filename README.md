@@ -18,15 +18,30 @@ A Perceptron is the most basic type of neural network, used for **binary classif
 - **Visualization**: Plots **True vs Predicted** outputs for every epoch.
 
 Multiple Layer Preceptron (MLP):
-1. Forward and Backward Propagation:
+1. Forward Propagation:
    
    A. Weighted Input
-   It’s the process of passing inputs through layers of the neural network to get the output (prediction).Each neuron     computes a weighted sum of inputs plus bias and applies an activation function to introduce non-linearity.
+      It’s the process of passing inputs through layers of the neural network to get the output (prediction).
     
        Mathematical Formula - z = W.x + b
        W = Weights corresponding to that neuron
        B =  Bias Corresponding to that nueron
        X = Input for the neuron
+   B. Activation Function
+      Each neuron computes a weighted sum of inputs plus bias and applies an activation function to introduce non-linearity.
+
+      A = f(z)
+      A = Relu, Sigmoid, Tanh or LeakyRelu
+   
+2. Backward Propagation:
+   A. It calculates the error between prediction and actual output.
+   B. Gradients (slopes) are calculated using the chain rule.
+   C. Weights are updated in the direction that reduces the error (gradient descent).
+
+   Mathematical Formula - dloss/dweight = dloss/dactivation X dactivation/dweightedinput x dweightedinput/dweight
+   
+   Goal: Minimize the loss by updating W and B.
+   
 
 
 ## How to Run
