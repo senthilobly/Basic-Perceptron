@@ -122,10 +122,68 @@ These techniques improve generalization, speed up training, and prevent overfitt
 - **Σ\|W\|**: Sum of absolute weights (L1)
 - **ΣW²**: Sum of squared weights (L2)
 
-   
+**Dropout:**
+Dropout randomly disables neurons during training to prevent over-reliance on specific neurons. It forces the network to learn redundant and robust features. This reduces overfitting, especially in large neural networks.
 
+### Dropout Regularization
 
-   
+| Concept        | Math Formula (Simplified)       | Usage/When to Use                          | Effect on Model                              | Typical Values          |
+|----------------|----------------------------------|--------------------------------------------|----------------------------------------------|-------------------------|
+| **Dropout**   | `A_drop = A * mask / (1 - p)`  | Large networks (CNNs/MLPs) prone to overfitting | Adds robustness, prevents neuron co-dependence | `p = 0.1` to `0.5` (0.5 common) |
+| **Backward Pass** | `dZ = dZ * mask / (1 - p)` | Applied during backpropagation | Maintains gradient consistency | Same as forward pass |
+
+#### Key:
+- `A`: Layer activations
+- `mask`: Binary matrix (Bernoulli distribution)
+- `p`: Dropout probability (e.g., 0.2 = 20% neurons dropped)
+- `1/(1-p)`: Scaling factor (inverted during training)
+
+**Batch Normalization:**
+Batch Normalization standardizes the activations within each mini-batch. It reduces internal covariate shift, leading to faster and more stable training. It can also allow for higher learning rates and less overfitting.
+
+### Batch Normalization
+
+| Concept               | Math Formula (Simplified)                     | Usage/When to Use                          | Effect on Model                              | Notes                                      |
+|-----------------------|-----------------------------------------------|--------------------------------------------|----------------------------------------------|--------------------------------------------|
+| **Batch Norm**       | `x_norm = (x - μ) / √(σ² + ε)`<br>`x_out = γ * x_norm + β` | Deep networks, unstable training | Stabilizes training, faster convergence | Used after layers but before activation |
+| **Inference Mode**   | Uses running averages: `μ_running`, `σ²_running` | Production/prediction phase | Consistent behavior on new data | Disables batch-dependent calculations |
+
+#### Key:
+- `μ/σ²`: Batch mean/variance
+- `ε`: Small constant (e.g., 1e-5)
+- `γ/β`: Learnable scale/shift parameters
+- Running stats: Updated during training with momentum
+
+#### Typical Values:
+- `ε = 1e-5`
+- Momentum for running stats: `0.99`
+
+**Optimizers:**
+Optimizers adjust weights using gradients to minimize loss efficiently. They determine how fast and stable the learning progresses. Popular optimizers include SGD, Momentum, RMSProp, Adam, with Adam being the most widely used.
+
+### Optimization Algorithms
+
+| Optimizer  | Math Formula (Simplified) | Usage/When to Use | Effect on Learning | Key Parameters |
+|------------|--------------------------|------------------|-------------------|----------------|
+| **SGD**    | `W = W - α*∇L` | Small datasets/models | Baseline, stable but slow | Learning rate (α) |
+| **Momentum** | `v = β*v + (1-β)*∇L`<br>`W = W - α*v` | Zig-zag gradients | Faster convergence | α, β (~0.9) |
+| **RMSProp** | `v = β*v + (1-β)*∇L²`<br>`W = W - α*∇L/(√v + ε)` | RNNs/unstable training | Stabilizes updates | α, β, ε (1e-8) |
+| **Adam**   | `m = β1*m + (1-β1)*g`<br>`v = β2*v + (1-β2)*g²`<br>`W = W - α*m/(√v + ε)` | Most deep learning tasks | Fast convergence | α, β1 (0.9), β2 (0.999), ε |
+| **AdamW**  | Adam + weight decay | Regularized models | Better generalization | Same as Adam |
+
+#### Key:
+- `W`: Weights
+- `α`: Learning rate
+- `β/β1/β2`: Momentum terms
+- `ε`: Small constant (~1e-8)
+- `g/∇L`: Gradient
+
+📝 Summary Cheat Notes:
+Topic	Use Case
+Regularization	- Controls weight size to avoid overfitting
+Dropout	- Randomly drops neurons to prevent co-dependency
+Batch Norm	- Normalizes activations to stabilize training
+Optimizers	- Smart weight updates for faster, stable convergence
 
 
 ## How to Run
