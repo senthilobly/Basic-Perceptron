@@ -81,13 +81,11 @@ b = b - learning_rate * db
 ✅ Weight Update → Gradient Descent  
 ✅ Output → Loss decreases across epochs, predictions improve
 
+
+![desc](https://github.com/user-attachments/assets/fe06c184-2802-4814-8d17-5dd3c185b00a)
+
 ## Requirements
 
 ```bash
 pip install numpy matplotlib
-
-
-**Sample Loss vs Epoch curve**
-
-<img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/fe06c184-2802-4814-8d17-5dd3c185b00a" />
 
