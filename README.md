@@ -90,7 +90,9 @@ The perceptron updates its weights iteratively using the **Perceptron Learning A
    If prediction = 0.9, true label = 1:
    Cross-Entropy Loss = −log(0.9)=0.105
 
-4. Regularization:
+   ##**Neural Network Training Stabilizers**
+
+5. Regularization:
    Regularization controls the complexity of a neural network by adding a penalty to large weights in the loss function.        It prevents overfitting and improves generalization to unseen data.
 
    Types include L1 (Lasso) and L2 (Ridge) regularization.
