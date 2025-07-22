@@ -1,4 +1,4 @@
-# README: Perceptron Logic Gate Classifier
+# README: Perceptron
 
 ## Overview
 
@@ -77,10 +77,10 @@ The perceptron updates its weights iteratively using the **Perceptron Learning A
 
 3. Loss Calculation:
    It measures how “wrong” the model’s predictions are.
-   | Type              | Use-Case       | Formula                                         |
-   | ----------------- | -------------- | ----------------------------------------------- |
-   | **MSE**           | Regression     | $\frac{1}{n} \sum (y - \hat{y})^2$              |
-   | **Cross-Entropy** | Classification | $-[y \log(\hat{y}) + (1 - y)\log(1 - \hat{y})]$ |
+   | Type              | Use-Case       | Formula                                                              |
+   | ----------------- | -------------- | ---------------------------------------------------------------------|
+   | **MSE**           | Regression     | `MSE = (sum of (actual - predicted)^2) / number of data`             |
+   | **Cross-Entropy** | Classification | `Cross-Entropy = - (y * log(y_pred) + (1 - y) * log(1 - y_pred))`    |
 
    Interpretation:
    Lower loss = better predictions.
@@ -89,6 +89,13 @@ The perceptron updates its weights iteratively using the **Perceptron Learning A
    Example:
    If prediction = 0.9, true label = 1:
    Cross-Entropy Loss = −log(0.9)=0.105
+
+4. Regularization:
+   Regularization controls the complexity of a neural network by adding a penalty to large weights in the loss function.        It prevents overfitting and improves generalization to unseen data.
+
+   Types include L1 (Lasso) and L2 (Ridge) regularization.
+
+   
 
 
    
