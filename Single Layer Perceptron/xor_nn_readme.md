@@ -1,158 +1,49 @@
-# XOR Problem - 3-Layer Neural Network using NumPy
+# Simple Perceptron for AND Gate with Visualization
 
-This project implements a simple 3-layer feedforward neural network from scratch using **NumPy** to solve the **XOR binary classification problem**.
+## Overview
 
----
+This project demonstrates a basic implementation of a **Perceptron** algorithm from scratch using Python and NumPy to learn the **AND Gate** logic. The training process is visualized using Matplotlib, showing how the perceptron learns to predict correct outputs over epochs.
 
-## 🤩 Problem Description
+## Features
 
-- **Dataset**: XOR gate truth table:
+- Implements a **single-layer perceptron** from scratch
+- Learns the **AND logic gate** without any machine learning libraries
+- Step activation function for binary classification
+- **Epoch-wise visualization** of true vs predicted outputs using line plots
+- Lightweight code ideal for beginners to understand perceptron fundamentals
 
-| Input (X1, X2) | Output (Y) |
-| -------------- | ---------- |
-| [0, 0]         | 0          |
-| [1, 0]         | 1          |
-| [1, 1]         | 0          |
-| [0, 1]         | 1          |
+## AND Gate Truth Table
 
-- **Goal**: Train a neural network to classify the XOR outputs correctly using forward propagation, backward propagation, and gradient descent.
+| Input X1 | Input X2 | Output (AND) |
+|-----------|-----------|----------------|
+| 0         | 0         | 0              |
+| 0         | 1         | 0              |
+| 1         | 0         | 0              |
+| 1         | 1         | 1              |
 
----
+## How It Works
 
-## ✅ Network Architecture
+1. **Initialize** random weights and bias.
+2. **Step Activation Function** is used to output `1` if weighted sum exceeds zero, else `0`.
+3. **Prediction Function** calculates the output for a given input.
+4. **Training Loop** updates weights and bias based on prediction error using a simple learning rule.
+5. After each epoch, it **plots the True vs Predicted outputs** for visualization.
 
-| Layer              | Details                                                  |
-| ------------------ | -------------------------------------------------------- |
-| **Input Layer**    | 2 neurons (X1, X2)                                       |
-| **Hidden Layer 1** | 4 neurons, ReLU activation                               |
-| **Hidden Layer 2** | 4 neurons, ReLU activation                               |
-| **Output Layer**   | 1 neuron, Sigmoid activation (for binary classification) |
+## Code Explanation
 
----
+- **step(z)**: Activation function that returns 1 if `z > 0` else 0.
+- **predict(x)**: Returns the prediction for an input sample.
+- **train(X, y, lr, epochs)**: Trains the perceptron using the Perceptron Learning Rule and visualizes learning progress.
 
-## 📝 Components Explained
+## Usage
 
-### 1. **Forward Propagation**
+### Requirements
 
-- Calculates activations at each layer using:
-  - Linear step: `Z = X·W + b`
-  - Activation functions:
-    - **ReLU** for hidden layers
-    - **Sigmoid** for output layer
+- Python 3.x
+- NumPy
+- Matplotlib
 
-### 2. **Loss Calculation**
-
-- **Binary Cross-Entropy Loss**:
-
-$$
-\text{Loss} = -\frac{1}{m} \sum \left[ y \log(A3) + (1 - y) \log(1 - A3) \right]
-$$
-
-### 3. **Backward Propagation**
-
-- Uses **gradients of the loss** to compute updates for each layer:
-  - `dZ3 = A3 - Y` (from sigmoid and BCE derivative simplification)
-  - Gradients are propagated backward through layers.
-
-### 4. **Weight Update**
-
-- **Gradient Descent** is used to update weights and biases:
-
-$$
-W = W - \text{learning\_rate} \times dW
-$$
-
----
-
-## ⚙️ Hyperparameters
-
-| Hyperparameter | Value                    |
-| -------------- | ------------------------ |
-| Learning Rate  | 0.1                      |
-| Epochs         | 10,000                   |
-| Batch Size     | 4 (entire dataset)       |
-| Loss Function  | Binary Cross-Entropy     |
-| Optimizer      | Vanilla Gradient Descent |
-
----
-
-## 📈 Expected Output
-
-- The **loss** decreases progressively and the model **predicts the XOR pattern correctly** after training.
-- Example Output:
-
-```
-Epoch 0 Loss: 0.8097
-Epoch 1000 Loss: 0.0205
-...
-Epoch 9000 Loss: 0.0057
-Predictions:
- [[0]
- [1]
- [0]
- [1]]
-```
-
----
-
-## 🖼️ Plotting
-
-The current script contains a placeholder for plotting:
-
-```python
-plt.plot(X,)
-plt.show()
-```
-
-You can modify it to plot **loss over epochs** like:
-
-```python
-losses = []
-for epoch in range(epochs):
-    ...
-    losses.append(loss)
-
-plt.plot(losses)
-plt.title("Loss Curve over Epochs")
-plt.xlabel("Epoch")
-plt.ylabel("Loss")
-plt.show()
-```
-
----
-
-## 🛠️ How to Run
-
-1. Install Python 3.x
-2. Install NumPy and Matplotlib:
+### Install Dependencies
 
 ```bash
 pip install numpy matplotlib
-```
-
-3. Run the Python script:
-
-```bash
-python xor_neural_network.py
-```
-
----
-
-## 📚 Learning Notes
-
-- ReLU activation keeps the hidden layers non-linear.
-- Sigmoid activation converts final output into a probability.
-- `A3 - Y` term comes from the derivative of BCE loss with sigmoid — simplifying backpropagation.
-- Using a simple MLP, you can solve non-linearly separable problems like XOR!
-
----
-
-## 📁 Folder Structure
-
-```
-project/
-│
-├── xor_neural_network.py  # Main Python Script
-└── README.md              # This README file
-```
-
