@@ -16,6 +16,16 @@ This project demonstrates a **Multi-Layer Perceptron (MLP)** built from scratch 
 
 ---
 
+## Neural Network Architecture
+
+| Layer Type    | Number of Neurons | Activation Function |
+|----------------|-------------------|----------------------|
+| Input Layer   | 2 neurons (X1, X2) | - (Raw Input)        |
+| Hidden Layer  | 1 hidden layer with 2 neurons | ReLU or Sigmoid |
+| Output Layer  | 1 neuron            | Sigmoid (for binary classification) |
+
+---
+
 ## Dataset (Binary Classification)
 
 | X1 | X2 | Y (Label) |
@@ -73,6 +83,22 @@ Weights are updated by minimizing the loss:
 W = W - learning_rate * dW
 b = b - learning_rate * db
 - Gradients (`dW`, `db`) are calculated layer-wise using chain rule.
+   - **Output Layer**:
+     dz = dLoss/dA_out * sigmoid_derivative(Z_output)
+     dw = np.dot(A_hidden.T, dz)
+     db = np.sum(dz, axis=0)
+  - **Hidden Layer**:
+     dz_hidden = np.dot(dz, W_output.T) * relu_derivative(Z_hidden)
+     dw_hidden = np.dot(X.T, dz_hidden)
+     db_hidden = np.sum(dz_hidden, axis=0)
+  **Weight Update Rule (Gradient Descent):**
+    W = W - learning_rate * dw
+    b = b - learning_rate * db
+  ## Summary of Mathematical Flow
+  Forward:
+    X → Linear → Activation → Linear → Sigmoid → Output
+  Backward:
+    Loss → dA_out → dZ → dW, db → Update Weights
 
 ## How It Works
 
