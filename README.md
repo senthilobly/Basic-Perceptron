@@ -90,7 +90,19 @@ The perceptron updates its weights iteratively using the **Perceptron Learning A
    If prediction = 0.9, true label = 1:
    Cross-Entropy Loss = −log(0.9)=0.105
 
-   ##**Neural Network Training Stabilizers**
+## Neural Network Training Stabilizers
+
+### Neural Network Training Stabilizers
+
+| Technique          | Purpose                                                                 | Key Effects                                                                 |
+|--------------------|-------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| **Regularization** (L1/L2) | Prevents overfitting by penalizing large weights. | • L1: Creates sparse weights (some → 0) <br> • L2: Keeps weights small but non-zero |
+| **Dropout**        | Randomly disables neurons during training.       | • Reduces overfitting <br> • Prevents neuron co-dependency                   |
+| **Batch Norm**     | Normalizes layer outputs to stabilize training.  | • Faster convergence <br> • Reduces sensitivity to initialization           |
+| **Optimization** (Adam/SGD) | Efficiently updates model weights.       | • Avoids local minima <br> • Adapts learning rates dynamically              |
+
+**Why They Matter**:  
+These techniques improve generalization, speed up training, and prevent overfitting in deep learning models.
 
 5. Regularization:
    Regularization controls the complexity of a neural network by adding a penalty to large weights in the loss function.        It prevents overfitting and improves generalization to unseen data.
