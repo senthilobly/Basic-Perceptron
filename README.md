@@ -104,10 +104,23 @@ The perceptron updates its weights iteratively using the **Perceptron Learning A
 **Why They Matter**:  
 These techniques improve generalization, speed up training, and prevent overfitting in deep learning models.
 
-5. Regularization:
+**Regularization:**
    Regularization controls the complexity of a neural network by adding a penalty to large weights in the loss function.        It prevents overfitting and improves generalization to unseen data.
 
    Types include L1 (Lasso) and L2 (Ridge) regularization.
+
+   ### Regularization Techniques Comparison
+
+| Type                     | Concept                          | Math Formula                     | Usage/When to Use                          | Effect                                      |
+|--------------------------|----------------------------------|----------------------------------|--------------------------------------------|---------------------------------------------|
+| **L1 (Lasso)**          | Penalizes absolute weights       | `Loss + λ * Σ\|W\|`             | Sparse models / feature selection          | Zeroes out unimportant weights             |
+| **L2 (Ridge)**         | Penalizes squared weights        | `Loss + λ * ΣW²`                | General overfitting prevention             | Smoothly shrinks all weights               |
+| **Elastic Net**        | Combines L1 + L2                 | `Loss + λ1*Σ\|W\| + λ2*ΣW²`     | Need both feature selection and stability  | Balances sparsity and weight shrinkage     |
+
+#### Key:
+- **λ (lambda)**: Controls regularization strength
+- **Σ\|W\|**: Sum of absolute weights (L1)
+- **ΣW²**: Sum of squared weights (L2)
 
    
 
