@@ -1,140 +1,87 @@
-# XOR Problem - 3-Layer Neural Network using NumPy
+# Multi-Layer Neural Network with L2 Regularization, Dropout, Batch Normalization (From Scratch)
 
-This project implements a simple 3-layer feedforward neural network from scratch using **NumPy** to solve the **XOR binary classification problem**.
+## Overview
 
----
-
-## Problem Description
-
-- **Dataset**: XOR gate truth table:
-
-| Input (X1, X2) | Output (Y) |
-| -------------- | ---------- |
-| [0, 0]         | 0          |
-| [1, 0]         | 1          |
-| [1, 1]         | 0          |
-| [0, 1]         | 1          |
-
-- **Goal**: Train a neural network to classify the XOR outputs correctly using forward propagation, backward propagation, and gradient descent.
+This project demonstrates a **Multi-Layer Perceptron (MLP)** built from scratch using **NumPy** and **Matplotlib** to perform a simple binary classification task. It integrates **L2 Regularization**, **Dropout**, **Batch Normalization**, **ReLU/Sigmoid activation**, and visualizes the **loss curve** during training.
 
 ---
 
-## Network Architecture
+## Architecture Summary
 
-| Layer              | Details                                                  |
-| ------------------ | -------------------------------------------------------- |
-| **Input Layer**    | 2 neurons (X1, X2)                                       |
-| **Hidden Layer 1** | 4 neurons, ReLU activation                               |
-| **Hidden Layer 2** | 4 neurons, ReLU activation                               |
-| **Output Layer**   | 1 neuron, Sigmoid activation (for binary classification) |
-
----
-
-## Components Explained
-
-### 1. **Forward Propagation**
-
-- Calculates activations at each layer using:
-  - Linear step: `Z = X·W + b`
-  - Activation functions:
-    - **ReLU** for hidden layers
-    - **Sigmoid** for output layer
-
-### 2. **Loss Calculation**
-
-- **Binary Cross-Entropy Loss**:
-
-$$
-Loss = Cross Entrophy Loss
-$$
-
-### 3. **Backward Propagation**
-
-- Uses **gradients of the loss** to compute updates for each layer:
-  - `dZ3 = A3 - Y` (from sigmoid and BCE derivative simplification)
-  - Gradients are propagated backward through layers.
-
-### 4. **Weight Update**
-
-- **Gradient Descent** is used to update weights and biases:
-
-$$
-W = W - Learning_rate * dW
-$$
+- **Input Layer**: 2 features
+- **Hidden Layer 1**: 4 neurons → ReLU → Batch Normalization → Dropout
+- **Hidden Layer 2**: 4 neurons → ReLU → Dropout
+- **Output Layer**: 1 neuron → Sigmoid activation
+- **Optimizer**: Gradient Descent
 
 ---
 
-##  Hyperparameters
+## Dataset (Binary Classification)
 
-| Hyperparameter | Value                    |
-| -------------- | ------------------------ |
-| Learning Rate  | 0.1                      |
-| Epochs         | 10,000                   |
-| Batch Size     | 4 (entire dataset)       |
-| Loss Function  | Binary Cross-Entropy     |
-| Optimizer      | Vanilla Gradient Descent |
-
----
-
-## Expected Output
-
-- The **loss** decreases progressively and the model **predicts the XOR pattern correctly** after training.
-- Example Output:
-
-```
-Epoch 0 Loss: 0.8097
-Epoch 1000 Loss: 0.0205
-...
-Epoch 9000 Loss: 0.0057
-Predictions:
- [[0]
- [1]
- [0]
- [1]]
-```
+| X1 | X2 | Y (Label) |
+|----|----|-----------|
+| 0  | 0  | 0         |
+| 1  | 0  | 1         |
+| 1  | 1  | 0         |
+| 0  | 1  | 1         |
 
 ---
 
-You can modify it to plot **loss over epochs** like:
+## Components and Simple Math Formulas
 
-```python
-losses = []
-for epoch in range(epochs):
-    ...
-    losses.append(loss)
+### 1. **Linear Transformation**
+Every layer computes:
+Z = X · W + b
+- `X`: Input matrix
+- `W`: Weights matrix
+- `b`: Bias vector
+- `Z`: Pre-activation output
 
-plt.plot(losses)
-plt.title("Loss Curve over Epochs")
-plt.xlabel("Epoch")
-plt.ylabel("Loss")
-plt.show()
-```
+### 2. **Activation Functions**
+- **ReLU (Rectified Linear Unit)**:
+  A = max(0, Z)
+- **Sigmoid** (for output layer):
+  A = 1 / (1 + e^(-Z))
+  This converts output into probabilities between 0 and 1.
 
----
+### 3. **Batch Normalization**
+Normalize activations after first linear layer:
 
-## How to Run
+Z_norm = (Z - mean) / sqrt(variance + ε)
+A = scale * Z_norm + shift
 
-1. Install Python 3.x
-2. Install NumPy and Matplotlib:
+- Stabilizes learning by reducing internal covariate shift.
+
+### 4. **Dropout**
+During training, randomly drops neurons to prevent overfitting:
+
+A_dropout = A * mask / (1 - dropout_rate)
+- `mask`: random binary mask
+- Disabled neurons do not contribute to learning.
+
+### 5. **L2 Regularization**
+Adds penalty for large weights:
+L2_penalty = λ * (||W1||² + ||W2||² + ||W3||²)
+- Helps reduce overfitting by shrinking weights.
+
+### 6. **Loss Function: Binary Cross Entropy + L2**
+Loss = - (1/m) Σ [Y log(A) + (1-Y) log(1-A)] + L2_penalty
+- Combines cross-entropy loss and L2 penalty.
+
+### 7. **Backward Propagation (Gradients)**
+Weights are updated by minimizing the loss:
+W = W - learning_rate * dW
+b = b - learning_rate * db
+- Gradients (`dW`, `db`) are calculated layer-wise using chain rule.
+
+## How It Works
+
+✅ Forward Pass → Apply Linear → Batch Norm → ReLU/Sigmoid  
+✅ Backward Pass → Compute Gradients with Dropout and L2  
+✅ Weight Update → Gradient Descent  
+✅ Output → Loss decreases across epochs, predictions improve
+
+## Requirements
 
 ```bash
 pip install numpy matplotlib
-```
-
-3. Run the Python script:
-
-```bash
-python xor_neural_network.py
-```
-
----
-
-## Learning Notes
-
-- ReLU activation keeps the hidden layers non-linear.
-- Sigmoid activation converts final output into a probability.
-- `A3 - Y` term comes from the derivative of BCE loss with sigmoid — simplifying backpropagation.
-- Using a simple MLP, you can solve non-linearly separable problems like XOR!
-
----
-
