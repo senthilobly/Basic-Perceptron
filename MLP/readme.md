@@ -86,7 +86,8 @@ b = b - learning_rate * db
 ```bash
 pip install numpy matplotlib
 
-Sample Loss vs Epoch curve
+
+**Sample Loss vs Epoch curve**
 
 <img width="1189" height="490" alt="image" src="https://github.com/user-attachments/assets/fe06c184-2802-4814-8d17-5dd3c185b00a" />
 
